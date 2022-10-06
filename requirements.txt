@@ -1,0 +1,13 @@
+scikit-learn
+tensorflow
+numpy
+Pillow
+gradio
+opencv-python
+keras
+h5py
+matplotlib
+scipy
+tqdm
+ipykernel
+tensorflow
