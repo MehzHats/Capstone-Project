@@ -28,20 +28,6 @@ The steps involved in the project are as follows:
 * [Step 6](#step6): Write your Algorithm
 * [Step 7](#step7): Test Your Algorithm
 
-
-
-## Project Components
-The project is divided in three major parts
-
-### 1. ETL Pipeline
-Data Processing Pipeline, to load data from source, merge and clean the data and save it in a SQLite database.
-
-### 2. ML Pipeline
-Machine Learning Pipeline, to load preprocessed data from the SQLite database, split the dataset into training and test sets, build and train the model using GridSearchCV and export the final model as pkl file.
-
-### 3. Flask Web App
-Web App to show data visualisation of the trained data using Plotly. An interactive portal is available to use model in real time.
-
 ## Getting Started
 
 ### Dependencies
@@ -53,7 +39,6 @@ Web App to show data visualisation of the trained data using Plotly. An interact
 5. Web App and Data Visualization: Gradio, HuggingFace, Matplotlib, Plotly
 
 A requirements.txt file is created to install all the dependencies needed for this project. To install them run following command.
-
 ```pip install -r requirements.txt```
 
 ## Authors
@@ -63,7 +48,7 @@ A requirements.txt file is created to install all the dependencies needed for th
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Datasets:
-The follwoing datasets are provided inorder to use and access the file remotely or on your local computer.
+The following datasets are provided inorder to use and access the file remotely or on your local computer.
 
 [Dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).
 
@@ -92,7 +77,7 @@ The follwoing datasets are provided inorder to use and access the file remotely 
     - Run the following command
         `python app.py`
 
-# Transfer Learning Result
+## Transfer Learning Result
 
 The demonstration shows how transfer learning can be used to implement an algorithm for dog breed identification. In this project, Resnet50 model was used with transfer learning to identify dog breed. Test validation accuracy produced by the model is about 80%.
 
@@ -100,7 +85,7 @@ When a user uploads an image opencv is used to determine if the image is a 
 
 ## Screenshots
 
-1. The model identifying the dog breed.
+1. Model identifying the dog breed.
 
 ![is_dog](screenshots/havanese_itsdog.png)
 
