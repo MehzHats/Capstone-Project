@@ -8,9 +8,27 @@ The Capstone Project for Dog Identification is one of the most popular Udacity p
 ## Project Motivation
 Dog breed identification is crucial when rescuing dogs, providing them loving families, rehabilitating them, and several other  circumstances because dogs are frequently difficult to categorise merely by looking. The classification of a dog's breeds reveals more about the personality of the breed. Our fondness and passion for dogs inspired us to choose this initiative.
 
-https://huggingface.co/spaces/mehzhats/dogbreedidentifier
+## Web Application
+There is a web application that utilizes data to inform how the web application works. The application is hosted on `huggingface`. Click on the link below to direct you to the hugging face spaces.
+
+<a href="https://huggingface.co/spaces/mehzhats/dogbreedidentifier">
+<img alt="Spaces" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue">
+</a>
+
+# The Road Ahead
 
 The steps involved in the project are as follows:
+
+* [Step 0](#step0): Import Datasets
+* [Step 1](#step1): Detect Humans
+* [Step 2](#step2): Detect Dogs
+* [Step 3](#step3): Create a CNN to Classify Dog Breeds (from Scratch)
+* [Step 4](#step4): Use a CNN to Classify Dog Breeds (using Transfer Learning)
+* [Step 5](#step5): Create a CNN to Classify Dog Breeds (using Transfer Learning)
+* [Step 6](#step6): Write your Algorithm
+* [Step 7](#step7): Test Your Algorithm
+
+
 
 ## Project Components
 The project is divided in three major parts
@@ -29,10 +47,10 @@ Web App to show data visualisation of the trained data using Plotly. An interact
 ### Dependencies
 
 1. Python 3.10.4
-2. Machine Learning Libraries: NumPy, SciPy, Pandas, Sciki-Learn
-3. Natural Language Process Libraries: NLTK
+2. Machine Learning Libraries: NumPy, SciPy, Pandas, Sciki-Learn, Tensorflow, Keras
+3. Image Processing Functionality: Pillow, Opencv-Python
 4. SQLlite Database Libraqries: SQLalchemy
-5. Web App and Data Visualization: Flask, Plotly
+5. Web App and Data Visualization: Gradio, HuggingFace, Matplotlib, Plotly
 
 A requirements.txt file is created to install all the dependencies needed for this project. To install them run following command.
 
@@ -44,61 +62,64 @@ A requirements.txt file is created to install all the dependencies needed for th
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Datasets:
+The follwoing datasets are provided inorder to use and access the file remotely or on your local computer.
+
+[Dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).
+
+[Human dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip).
 
 ## Instructions:
-1. Run the following commands in the project's root directory to set up your database and model.
 
-    - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+1. The following steps will provide a brief guideline to work through the model.
 
-2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+    - To create a CNN to Classify Dog Breeds (using Transfer Learning)
+    You must use the bottleneck features from a different pre-trained model. Pre-computed features for all of the networks that are currently available in Keras is provided below:
 
-3. Go to http://0.0.0.0:3001/
+        - VGG-19 bottleneck features
+        - ResNet-50 bottleneck features
+        - Inception bottleneck features
+        - Xception bottleneck features
 
+    The files are encoded as such:
+
+    Dog{network}Data.npz
+    where `{network}`, in the above filename, can be one of `VGG19`, `Resnet50`, `InceptionV3`, or `Xception`. Pick one of the above architectures, download the corresponding bottleneck features, and store the downloaded file in the bottleneck_features/ folder in the repository.
+
+    `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. The Python notebook requires datasets provided by Udacity. However for the demo,
+    - Run the following command
+        `python app.py`
+
+# Transfer Learning Result
+
+The demonstration shows how transfer learning can be used to implement an algorithm for dog breed identification. In this project, Resnet50 model was used with transfer learning to identify dog breed. Test validation accuracy produced by the model is about 80%.
+
+When a user uploads an image opencv is used to determine if the image is a human or not. Then the image is passed through a vanilla Resnet50 to predict whether the image has a dog or not. If a face or a dog is detected in the image, then the image is passed through a model that was trained to predict dog breeds.
 
 ## Screenshots
 
-1. This is an example of a message you can type to test Machine Learning model performance.
+1. The model identifying the dog breed.
 
-![message_result](images/message_result.png)
+![is_dog](screenshots/havanese_itsdog.png)
 
-2. Data visualisation for the least 10 categories.
+2. Model when neither human nor dog is detected.
 
-![least_categories](images/least_categories.png)
+![is_error](screenshots/error_un_img.png)
 
-3. Data visualisation for the message category distribution.
+3. Model identifying what breed of dog the human resembles.
 
-![least_categories](images/message_cat_dist.png)
+![human_dog](screenshots/human_resembles.png)
 
-4. Data visualisation for the words count distribution.
+4. Web app for dog breed identifier.
 
-![least_categories](images/word_count_dist.png)
+![web_app_identity](screenshots/dog_ident.png)
 
-5. The f1 score, precision and recall for the test set output is shown for each category.
+5. The follwing is the screen recording of demo of the web app.
 
-model_metrics_1             |  model_metrics_2
-:-------------------------:|:-------------------------:
-![](images/model_metrics/model_metrics_1.png )  |  ![](images/model_metrics/model_metrics_2.png)
-
-
-model_metrics_3             |  model_metrics_4
-:-------------------------:|:-------------------------:
-![](images/model_metrics/model_metrics_3.png )  |  ![](images/model_metrics/model_metrics_4.png)
-
-
-model_metrics_4             |  model_metrics_6
-:-------------------------:|:-------------------------:
-![](images/model_metrics/model_metrics_5.png )  |  ![](images/model_metrics/model_metrics_6.png)
-
-
-model_metrics_7             |  model_metrics_8
-:-------------------------:|:-------------------------:
-![](images/model_metrics/model_metrics_3.png )  |  ![](images/model_metrics/model_metrics_4.png)
+<video src="screenshots/dog_ident_record.mov" width=600 />
 
 ## Acknowledgements
 
-* [Udacity](https://www.udacity.com/) Data Science Nanodegree Program
-* [Appen](https://appen.com/) Data from Appen (formally Figure 8) to build a model for an API that classifies disaster messages.
+* [Udacity](https://www.udacity.com/) Data Scientist Capstone Project
