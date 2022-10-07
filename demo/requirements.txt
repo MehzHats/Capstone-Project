@@ -1,0 +1,6 @@
+tensorflow
+numpy
+Pillow
+gradio
+opencv-python
+keras
