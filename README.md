@@ -118,7 +118,7 @@ When a user uploads an image opencv is used to determine if the image is a 
 
 5. The follwing is the screen recording of demo of the web app.
 
-<video src="screenshots/dog_ident_record.mov" width=600 />
+![dog_ident_record](screenshots/dog_ident_record.gif)
 
 ## Acknowledgements
 
